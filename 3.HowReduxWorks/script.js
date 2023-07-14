@@ -10,12 +10,12 @@ function createReducer(state = initialState, action) {
   if (action.type === 'increment') {
     return {
       ...state,
-      value: state.value + 1,
+      value: state.value + action.payload,
     };
   } else if (action.type === 'decrement') {
     return {
       ...state,
-      value: state.value - 1,
+      value: state.value - action.payload,
     };
   } else {
     return state;
@@ -34,11 +34,13 @@ store.subscribe(render);
 IncrementEl.addEventListener('click', () => {
   store.dispatch({
     type: 'increment',
+    payload: 5,
   });
 });
 
 DecrementEl.addEventListener('click', () => {
   store.dispatch({
     type: 'decrement',
+    payload: 2,
   });
 });
