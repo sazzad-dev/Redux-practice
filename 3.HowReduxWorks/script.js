@@ -6,6 +6,23 @@ const initialState = {
   value: 0,
 };
 
+const INCREMENT = 'increment';
+const DECREMENT = 'decrement';
+
+const increment = (value) => {
+  return {
+    type: INCREMENT,
+    payload: value,
+  };
+};
+
+const decrement = (value) => {
+  return {
+    type: DECREMENT,
+    payload: value,
+  };
+};
+
 function createReducer(state = initialState, action) {
   if (action.type === 'increment') {
     return {
@@ -32,15 +49,9 @@ render();
 store.subscribe(render);
 
 IncrementEl.addEventListener('click', () => {
-  store.dispatch({
-    type: 'increment',
-    payload: 5,
-  });
+  store.dispatch(increment(10));
 });
 
 DecrementEl.addEventListener('click', () => {
-  store.dispatch({
-    type: 'decrement',
-    payload: 2,
-  });
+  store.dispatch(decrement(5));
 });
